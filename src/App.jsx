@@ -21,6 +21,7 @@ function App() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
+      justifyContent: 'center',
       padding: '40px 20px',
       textAlign: 'center'
     }}>
@@ -61,11 +62,11 @@ function App() {
         />
       </div>
 
-      {/* Clickable Contract Address with Clipboard Icon */}
+      {/* Clickable Contract Address */}
       <div style={{
         maxWidth: '620px',
         width: '100%',
-        marginBottom: '60px'
+        marginBottom: '40px'
       }}>
         <div 
           onClick={copyToClipboard}
@@ -95,7 +96,6 @@ function App() {
         >
           <span>{contractAddress}</span>
           
-          {/* Standard Clipboard Icon (changes to checkmark when copied) */}
           <span style={{ 
             marginLeft: '20px', 
             display: 'flex', 
@@ -146,6 +146,58 @@ function App() {
           </p>
         )}
       </div>
+
+      {/* Placeholder text */}
+      <div style={{
+        maxWidth: '620px',
+        width: '100%',
+        fontSize: '1.1rem',
+        lineHeight: '1.7',
+        color: '#444',
+        padding: '0 20px',
+        marginBottom: '30px'
+      }}>
+        <p>
+          A tribute to the original DoomerGirl, mothemi.
+        </p>
+        <p style={{ marginTop: '18px' }}>
+          Fee distribution:
+          50% Trending Boosts / 50% Emi's wallet
+        </p>
+      </div>
+
+      {/* Black & White Know Your Meme Button */}
+      <a 
+        href="https://knowyourmeme.com/memes/doomer-girl"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#000000',
+          color: '#ffffff',
+          fontSize: '1.1rem',
+          fontWeight: '700',
+          padding: '16px 32px',
+          borderRadius: '12px',
+          textDecoration: 'none',
+          transition: 'all 0.2s ease',
+          border: '2px solid #000000',
+          maxWidth: '310px',
+          width: '100%'
+        }}
+        onMouseOver={e => {
+          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.color = '#000000';
+        }}
+        onMouseOut={e => {
+          e.target.style.backgroundColor = '#000000';
+          e.target.style.color = '#ffffff';
+        }}
+      >
+        📖 Know Your Meme
+      </a>
     </div>
   );
 }
