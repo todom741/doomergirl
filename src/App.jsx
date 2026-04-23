@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import emiImage from './assets/emi.png'; // ← Make sure your image is in src/assets/emi.png
+import emiImage from './assets/emi.png';
 
 function App() {
   const [copied, setCopied] = useState(false);
@@ -44,7 +44,7 @@ function App() {
         </p>
       </header>
 
-      {/* Centered Image - No border, No shadow */}
+      {/* Centered Image */}
       <div style={{
         marginBottom: '50px',
         maxWidth: '420px',
@@ -61,110 +61,91 @@ function App() {
         />
       </div>
 
-      {/* Contract Address Section - Clean, no title, no heavy border */}
+      {/* Clickable Contract Address with Clipboard Icon */}
       <div style={{
         maxWidth: '620px',
         width: '100%',
         marginBottom: '60px'
       }}>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          backgroundColor: '#f8f8f8',
-          borderRadius: '12px',
-          padding: '18px 24px',
-          fontFamily: 'monospace',
-          fontSize: '1.1rem',
-          wordBreak: 'break-all',
-          marginBottom: '16px'
-        }}>
-          {contractAddress}
-        </div>
-
-        <button 
+        <div 
           onClick={copyToClipboard}
           style={{
-            backgroundColor: '#000',
-            color: '#fff',
-            border: 'none',
-            padding: '16px 40px',
-            fontSize: '1.15rem',
-            fontWeight: '700',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            backgroundColor: '#f8f8f8',
+            borderRadius: '12px',
+            padding: '18px 24px',
+            fontFamily: 'monospace',
+            fontSize: '1.1rem',
+            wordBreak: 'break-all',
             cursor: 'pointer',
-            borderRadius: '10px',
-            transition: 'all 0.2s',
-            width: '100%',
-            maxWidth: '280px'
+            transition: 'all 0.2s ease',
+            userSelect: 'none',
+            border: '1px solid transparent'
           }}
-          onMouseOver={e => e.target.style.backgroundColor = '#222'}
-          onMouseOut={e => e.target.style.backgroundColor = '#000'}
+          onMouseOver={e => {
+            e.target.style.backgroundColor = '#f0f0f0';
+            e.target.style.borderColor = '#ddd';
+          }}
+          onMouseOut={e => {
+            e.target.style.backgroundColor = '#f8f8f8';
+            e.target.style.borderColor = 'transparent';
+          }}
         >
-          {copied ? '✅ COPIED!' : 'COPY CA'}
-        </button>
+          <span>{contractAddress}</span>
+          
+          {/* Standard Clipboard Icon (changes to checkmark when copied) */}
+          <span style={{ 
+            marginLeft: '20px', 
+            display: 'flex', 
+            alignItems: 'center',
+            flexShrink: 0 
+          }}>
+            {copied ? (
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="#22c55e" 
+                strokeWidth="3" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            ) : (
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="#666" 
+                strokeWidth="2.25" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            )}
+          </span>
+        </div>
+
+        {copied && (
+          <p style={{
+            marginTop: '14px',
+            color: '#22c55e',
+            fontWeight: '600',
+            fontSize: '1rem'
+          }}>
+            ✓ Contract address copied!
+          </p>
+        )}
       </div>
-
-      {/* About Section */}
-      <section style={{ maxWidth: '680px', marginBottom: '80px' }}>
-        <h2 style={{ fontSize: '2.2rem', marginBottom: '24px' }}>who is doomer girl?</h2>
-        <p style={{ 
-          fontSize: '1.25rem', 
-          lineHeight: '1.7',
-          maxWidth: '580px',
-          margin: '0 auto'
-        }}>
-          She's seen it all. The pumps. The dumps. The rug pulls. 
-          Through every cycle, she remains... doomer.
-          <br /><br />
-          Now she's on Solana as $emi — the ultimate meme for those who know how this ends.
-        </p>
-      </section>
-
-      {/* How to Buy */}
-      <section style={{ maxWidth: '680px', marginBottom: '80px' }}>
-        <h2 style={{ fontSize: '2.2rem', marginBottom: '24px' }}>HOW TO BUY $EMI</h2>
-        <div style={{
-          backgroundColor: '#000',
-          color: '#fff',
-          padding: '32px',
-          borderRadius: '12px',
-          textAlign: 'left',
-          fontSize: '1.1rem',
-          lineHeight: '1.8'
-        }}>
-          1. Get a Solana wallet (Phantom, Solflare, etc.)<br />
-          2. Buy $SOL on an exchange and send it to your wallet<br />
-          3. Transfer $SOL to your wallet<br />
-          4. Go to Jupiter or a DEX aggregator<br />
-          5. Paste the CA and swap $SOL for $EMI
-        </div>
-      </section>
-
-      {/* Socials */}
-      <footer style={{ 
-        marginTop: 'auto', 
-        paddingTop: '60px',
-        borderTop: '3px solid #000',
-        width: '100%',
-        maxWidth: '680px'
-      }}>
-        <p style={{ fontSize: '1.3rem', fontWeight: '700', marginBottom: '20px' }}>
-          JOIN THE DOOM
-        </p>
-        <div style={{ 
-          display: 'flex', 
-          gap: '30px', 
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-          fontSize: '1.5rem'
-        }}>
-          <a href="https://twitter.com" target="_blank" style={{ color: '#000', textDecoration: 'none' }}>𝕏</a>
-          <a href="https://t.me" target="_blank" style={{ color: '#000', textDecoration: 'none' }}>TELEGRAM</a>
-          <a href="#" target="_blank" style={{ color: '#000', textDecoration: 'none' }}>DEXSCREENER</a>
-        </div>
-        <p style={{ marginTop: '60px', fontSize: '0.95rem', opacity: 0.7 }}>
-          $emi • DoomerGirl • Not financial advice • DYOR
-        </p>
-      </footer>
     </div>
   );
 }
