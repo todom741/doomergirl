@@ -23,7 +23,7 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const contractAddress = "8x...YourSolanaContractAddressHere...123";
+  const contractAddress = "6qWCicN3idWTNiWsdYytn95LfZ59rjFpaRUMPMnrpump";
 
   return (
     <>
