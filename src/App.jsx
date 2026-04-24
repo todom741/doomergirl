@@ -76,7 +76,7 @@ function App() {
             color: '#111',
             margin: 0
           }}>
-            $emi
+            Emi
           </p>
         </header>
 
