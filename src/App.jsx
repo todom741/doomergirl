@@ -193,7 +193,7 @@ function App() {
 
           {/* DexScreener Logo */}
           <a 
-            href="https://dexscreener.com/"
+            href="https://dexscreener.com/solana/fdfrgx3bo5pc32zhpgcdaelx4tjvhus24j5avhtvqssj"
             target="_blank"
             rel="noopener noreferrer"
             style={{
